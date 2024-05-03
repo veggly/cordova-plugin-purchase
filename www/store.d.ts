@@ -2464,6 +2464,7 @@ declare namespace CdvPurchase {
             export type TransactionState = "PaymentTransactionStatePurchasing" | "PaymentTransactionStatePurchased" | "PaymentTransactionStateDeferred" | "PaymentTransactionStateFailed" | "PaymentTransactionStateRestored" | "PaymentTransactionStateFinished";
             /**
              * A receipt returned by the native side.
+             */
             type RawReceiptArgs = [
                 base64: string,
                 bundleIdentifier: string,
@@ -2471,7 +2472,6 @@ declare namespace CdvPurchase {
                 bundleNumericVersion: number,
                 bundleSignature: string
             ];
-             */
 
             export interface BridgeCallbacks {
                 error: (code: ErrorCode, message: string, options?: {
@@ -2586,7 +2586,7 @@ declare namespace CdvPurchase {
                 transactionUpdated(state: TransactionState, errorCode: ErrorCode | undefined, errorText: string | undefined, transactionIdentifier: string, productId: string, transactionReceipt: never, originalTransactionIdentifier: string | undefined, transactionDate: string | undefined, discountId: string | undefined): void;
                 restoreCompletedTransactionsFinished(): void;
                 restoreCompletedTransactionsFailed(errorCode: ErrorCode): void;
-                //parseReceiptArgs(args: RawReceiptArgs): ApplicationReceipt;
+                parseReceiptArgs(args: RawReceiptArgs): ApplicationReceipt;
                 refreshReceipts(successCb: (receipt: ApplicationReceipt) => void, errorCb: (code: ErrorCode, message: string) => void): void;
                 loadReceipts(callback: (receipt: ApplicationReceipt) => void, errorCb: (code: ErrorCode, message: string) => void): void;
                 /** @deprecated */
@@ -2596,7 +2596,7 @@ declare namespace CdvPurchase {
                 /** @deprecated */
                 onRestored: boolean;
             }
-            export {};
+            export { };
         }
     }
 }
@@ -4826,7 +4826,7 @@ declare namespace CdvPurchase {
                 /** The subscription purchase is no longer available for query because it has been expired for too long. */
                 GONE = 410
             }
-            export {};
+            export { };
         }
     }
 }
